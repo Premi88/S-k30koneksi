@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sewa Linkedin Old - Modern Fintech</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* === GLOBAL STYLES === */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #F4F7F9;
+            color: #172B4D; /* Dark Text */
+            line-height: 1.6;
+            padding-bottom: 120px; /* Space for floating button */
+        }
+
+        :root {
+            --primary-blue: #0052CC;
+            --light-blue-bg: #E6F0FF;
+            --dark-blue: #091E42;
+            --white: #ffffff;
+            --gray-text: #5E6C84;
+            --success: #00875A;
+            --card-shadow: 0 8px 24px rgba(9, 30, 66, 0.08);
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* === HEADER === */
+        header {
+            text-align: center;
+            padding: 50px 20px 30px;
+            background: var(--white);
+            margin-bottom: 30px;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            background-color: #E3FCEF;
+            color: #006644;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .status-dot {
+            height: 8px;
+            width: 8px;
+            background-color: #00B87A;
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 184, 122, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 184, 122, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 184, 122, 0); }
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--dark-blue);
+            letter-spacing: -0.02em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: var(--gray-text);
+            font-weight: 500;
+        }
+
+        /* === CARD STYLES === */
+        .card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .card h2 {
+            color: var(--dark-blue);
+            font-size: 1.35rem;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        /* === GRID ICONS === */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 20px;
+        }
+
+        .info-box {
+            background-color: #F8FAFC;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        
+        .info-box:hover { transform: translateY(-3px); }
+
+        .info-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--light-blue-bg);
+            color: var(--primary-blue);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+        }
+
+        .info-box h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--dark-blue);
+        }
+
+        .info-box p {
+            font-size: 0.9rem;
+            color: var(--gray-text);
+            line-height: 1.4;
+        }
+
+        /* === WARNING BOX === */
+        .warning-box-modern {
+            background-color: #FFFAEB;
+            color: #B54708;
+            padding: 15px 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+            margin-top: 25px;
+            font-weight: 500;
+        }
+
+        /* === NEW: RATE SECTION STYLES === */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .pricing-card {
+            background: #F8FAFC;
+            padding: 25px 20px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid transparent;
+            transition: all 0.3s;
+        }
+
+        /* Highlight untuk akun mahal */
+        .pricing-card.highlight {
+            background: var(--light-blue-bg);
+            border: 1px solid var(--primary-blue);
+        }
+
+        .price-tag {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--dark-blue);
+            margin: 10px 0;
+            letter-spacing: -1px;
+        }
+        
+        .pricing-card.highlight .price-tag {
+            color: var(--primary-blue);
+        }
+
+        .price-label {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--gray-text);
+        }
+
+        .referral-box {
+            background: linear-gradient(135deg, var(--dark-blue), var(--primary-blue));
+            color: white;
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 82, 204, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Dekorasi background referral */
+        .referral-box::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(45deg);
+        }
+
+        .reff-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-top: 5px;
+        }
+
+        /* === SCHEDULE & PAYMENT === */
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .schedule-item-modern {
+            background: #F8FAFC;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .schedule-item-modern strong {
+            display: block;
+            color: var(--primary-blue);
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .payment-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        .payment-svg {
+            transition: transform 0.2s;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05));
+        }
+        .payment-svg:hover { transform: translateY(-3px); }
+
+        /* === FLOATING CTA === */
+        .floating-cta-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 20px 25px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+            z-index: 100;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
+        }
+
+        .cta-button-modern {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 16px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+            box-shadow: 0 8px 20px rgba(0, 82, 204, 0.3);
+            gap: 10px;
+        }
+        
+        .cta-button-modern:hover {
+            background-color: var(--dark-blue);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 600px) {
+            .pricing-grid { grid-template-columns: 1fr; }
+            .schedule-grid { grid-template-columns: 1fr; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="status-badge">
+            <div class="status-dot"></div>
+            $12 / Week
+        </div>
+        <h1>Sewa Linkedin Old</h1>
+        <p>Hasilkan Cuan dengan menyewakan akun linkedin kalian.</p>
+    </header>
+
+    <main class="container">
+
+        <section class="card">
+            <h2>Kriteria Akun</h2>
+            <div class="info-grid" style="grid-template-columns: 1fr 1fr;">
+                <div class="info-box">
+                    <div class="info-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    </div>
+                    <h3>Umur Akun</h3>
+                    <p>Minimal November 2024</p>
+                </div>
+                <div class="info-box">
+                    <div class="info-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    </div>
+                    <h3>Koneksi</h3>
+                    <p>Minimal 30 Koneksi</p>
+                </div>
+            </div>
+            <div class="warning-box-modern">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B54708" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                <div>Belum 30 koneksi? Silahkan Gb di grup khusus Gb yang ada di deskripsi.</div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Peraturan Yang Harus Dipatuhi</h2>
+            <div class="info-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
+                <div class="info-box">
+                    <h3>Akun Pribadi</h3>
+                    <p>Wajib akun asli milik sendiri.</p>
+                </div>
+                <div class="info-box">
+                    <h3>No Limit</h3>
+                    <p>Akun tidak kena limit mingguan.</p>
+                </div>
+                <div class="info-box">
+                    <h3>No Request Numpuk</h3>
+                    <p>Bersihkan pending request.</p>
+                </div>
+                <div class="info-box">
+                    <h3>No 2FA</h3>
+                    <p>Wajib matikan Two-Factor Auth.</p>
+                </div>
+                <div class="info-box">
+                    <h3>No Nuyul</h3>
+                    <p>Dilarang Duplicate Akun.</p>
+                </div>
+                <div class="info-box" style="background: #FFF5F5;">
+                    <h3 style="color:#DE350B;">Eksklusif</h3>
+                    <p style="font-weight:600; color:#DE350B;">Ga boleh sewain di agensi lain!!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Rate Sewa & Komisi</h2>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="price-label">Akun Normal</div>
+                    <div class="price-tag">$12</div>
+                    <p style="color:var(--gray-text); font-size:0.85rem;">Per akun / sesi</p>
+                </div>
+
+                <div class="pricing-card highlight">
+                    <div class="price-label" style="color:var(--primary-blue);">Akun Un Restric</div>
+                    <div class="price-tag">$17</div>
+                    <p style="color:var(--gray-text); font-size:0.85rem;">Per akun / sesi</p>
+                </div>
+            </div>
+
+            <div class="referral-box">
+                <div style="font-size:1.1rem; font-weight:600; opacity:0.9;">🤝 Rate Reff / Invite</div>
+                <div class="reff-price">$2 - $3 <span style="font-size:1rem; font-weight:500;">per Invite</span></div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Jadwal Sewa & Payment</h2>
+            <div class="schedule-grid">
+                <div class="schedule-item-modern">
+                    <strong>🕒 Jadwal Start Sewa</strong>
+                    <span>Minggu - Jumat<br>( 21:00 - 05:00 )</span>
+                </div>
+                <div class="schedule-item-modern">
+                    <strong>💰 Jadwal Payment</strong>
+                    <span>Hari Minggu<br>( Kalau tidak delay )</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Untuk apa akunya?</h2>
+            <p style="text-align:center; color: var(--gray-text); margin-bottom: 15px;">👇 CONTOH POSTINGAN KLIEN 👇</p>
+            <div class="svg-container">
+                <svg width="100%" height="450" viewBox="0 0 500 450" xmlns="http://www.w3.org/2000/svg">
+                    <style>
+                        .li-font { font-family: 'Plus Jakarta Sans', sans-serif; }
+                        .li-bold { font-weight: 700; }
+                        .li-gray { fill: #666666; }
+                        .li-blue { fill: #0a66c2; }
+                        .li-border { stroke: #e0e0e0; stroke-width: 0.5; }
+                    </style>
+                    <rect x="0" y="0" width="500" height="450" fill="#ffffff" />
+                    <circle cx="40" cy="40" r="24" fill="#FF5722" stroke="#ffffff" stroke-width="2"/>
+                    <text x="40" y="45" text-anchor="middle" fill="white" class="li-font li-bold" font-size="18">DS</text>
+                    <text x="75" y="35" class="li-font li-bold" font-size="16" fill="rgba(0,0,0,0.9)">Digital Store Premium ID</text>
+                    <text x="75" y="52" class="li-font li-gray" font-size="13">Seller • Netflix, Canva, Youtube Premium</text>
+                    <text x="20" y="100" class="li-font" font-size="15" fill="rgba(0,0,0,0.9)">
+                        <tspan x="20" dy="0">Ready stok lagi nih! 🔥 Akses premium murah.</tspan>
+                        <tspan x="20" dy="25">✅ <tspan class="li-blue" font-weight="bold">#NetflixPremium</tspan> 4K UHD</tspan>
+                        <tspan x="20" dy="25">✅ <tspan class="li-blue" font-weight="bold">#CanvaPro</tspan> Lifetime</tspan>
+                    </text>
+                    <g transform="translate(0, 190)">
+                        <rect x="0" y="0" width="500" height="160" fill="#E50914"/>
+                        <rect x="0" y="0" width="500" height="160" fill="url(#gradPromo)" opacity="0.8"/>
+                        <defs>
+                            <linearGradient id="gradPromo" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#00c4cc;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#E50914;stop-opacity:0" />
+                            </linearGradient>
+                        </defs>
+                        <text x="50%" y="50" dominant-baseline="middle" text-anchor="middle" fill="white" class="li-font li-bold" font-size="26">⚡ FLASH SALE ⚡</text>
+                        <text x="50%" y="85" dominant-baseline="middle" text-anchor="middle" fill="white" class="li-font" font-size="18">NETFLIX & CANVA PRO</text>
+                        <rect x="180" y="125" width="140" height="25" rx="12.5" fill="white"/>
+                        <text x="50%" y="138" dominant-baseline="middle" text-anchor="middle" fill="#E50914" class="li-font li-bold" font-size="12">ORDER VIA WHATSAPP</text>
+                    </g>
+                    <line x1="20" y1="385" x2="480" y2="385" class="li-border"/>
+                    <g transform="translate(30, 400)">
+                        <text x="30" y="16" class="li-font li-bold li-gray" font-size="14">Like</text>
+                        <text x="140" y="16" class="li-font li-bold li-gray" font-size="14">Comment</text>
+                        <text x="265" y="16" class="li-font li-bold li-gray" font-size="14">Repost</text>
+                        <text x="385" y="16" class="li-font li-bold li-gray" font-size="14">Send</text>
+                    </g>
+                </svg>
+            </div>
+        </section>
+
+        <section class="card" style="text-align: center;">
+            <h2>All Payment Bank / E-Wallet</h2>
+            <div class="payment-logos">
+                <svg class="payment-svg" width="90" height="45" viewBox="0 0 90 45">
+                    <defs><linearGradient id="bca" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0a66c2"/><stop offset="100%" stop-color="#003d80"/></linearGradient></defs>
+                    <rect width="90" height="45" rx="8" fill="url(#bca)"/><text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle" fill="white" font-weight="800" font-family="Plus Jakarta Sans" font-size="18">BCA</text>
+                </svg>
+                <svg class="payment-svg" width="90" height="45" viewBox="0 0 90 45">
+                    <defs><linearGradient id="man" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0056b3"/><stop offset="100%" stop-color="#003366"/></linearGradient></defs>
+                    <rect width="90" height="45" rx="8" fill="url(#man)"/><text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle" fill="#ffca00" font-weight="800" font-family="Plus Jakarta Sans" font-size="16">Mandiri</text>
+                </svg>
+                <svg class="payment-svg" width="90" height="45" viewBox="0 0 90 45">
+                    <defs><linearGradient id="bri" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0077b5"/><stop offset="100%" stop-color="#004182"/></linearGradient></defs>
+                    <rect width="90" height="45" rx="8" fill="url(#bri)"/><text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle" fill="white" font-weight="900" font-family="Plus Jakarta Sans" font-size="18">BRI</text>
+                </svg>
+                <svg class="payment-svg" width="90" height="45" viewBox="0 0 90 45">
+                    <defs><linearGradient id="dana" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#40c9ff"/><stop offset="100%" stop-color="#118eea"/></linearGradient></defs>
+                    <rect width="90" height="45" rx="8" fill="url(#dana)"/><text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle" fill="white" font-weight="800" font-family="Plus Jakarta Sans" font-size="16">DANA</text>
+                </svg>
+                <svg class="payment-svg" width="90" height="45" viewBox="0 0 90 45">
+                    <defs><linearGradient id="go" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#55e6f8"/><stop offset="100%" stop-color="#00a8cc"/></linearGradient></defs>
+                    <rect width="90" height="45" rx="8" fill="url(#go)"/><text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle" fill="white" font-weight="800" font-family="Plus Jakarta Sans" font-size="16">GOPAY</text>
+                </svg>
+                <svg class="payment-svg" width="90" height="45" viewBox="0 0 90 45">
+                    <defs><linearGradient id="ovo" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8a60ff"/><stop offset="100%" stop-color="#4c3494"/></linearGradient></defs>
+                    <rect width="90" height="45" rx="8" fill="url(#ovo)"/><text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle" fill="white" font-weight="800" font-family="Plus Jakarta Sans" font-size="16">OVO</text>
+                </svg>
+            </div>
+        </section>
+
+    </main>
+
+    <div class="floating-cta-container">
+        <a href="https://wa.me/6285293591174" class="cta-button-modern" target="_blank">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382C17.111 14.201 15.334 13.325 15.003 13.215C14.671 13.105 14.43 13.045 14.189 13.406C13.948 13.767 13.265 14.569 13.064 14.809C12.863 15.05 12.662 15.08 12.301 14.9C11.94 14.72 10.776 14.339 9.391 13.106C8.297 12.133 7.559 10.932 7.338 10.551C7.117 10.17 7.314 9.966 7.495 9.786C7.655 9.626 7.853 9.37 8.034 9.16C8.215 8.95 8.275 8.799 8.395 8.559C8.516 8.318 8.456 8.108 8.375 7.948C8.295 7.787 7.612 6.115 7.331 5.434C7.05 4.773 6.769 4.863 6.568 4.863C6.388 4.863 6.167 4.853 5.946 4.853C5.725 4.853 5.364 4.933 5.063 5.264C4.762 5.594 3.9 6.406 3.9 8.059C3.9 9.712 5.103 11.315 5.284 11.555C5.464 11.796 7.694 15.235 11.108 16.708C11.921 17.059 12.554 17.269 13.045 17.425C13.858 17.685 14.601 17.645 15.193 17.555C15.855 17.455 17.231 16.723 17.512 15.932C17.793 15.14 17.793 14.459 17.713 14.319C17.633 14.179 17.412 14.099 17.051 13.918V14.382ZM12 21.6C10.314 21.6 8.708 21.169 7.308 20.418L7.007 20.237L3.5 21.159L4.433 17.742L4.232 17.422C3.399 16.099 2.958 14.567 2.958 12.994C2.958 8.004 7.007 3.955 11.99 3.955C14.408 3.955 16.675 4.897 18.38 6.61C20.085 8.323 21.027 10.59 21.027 13.004C21.027 17.994 16.978 22.043 11.99 22.043L12 21.6Z"/></svg>
+            Hubungi Admin / Join Grup
+        </a>
+        <p style="text-align: center; font-size: 0.8rem; color: var(--gray-text); margin-top: 10px;">&copy; 2024 Sewa Linkedin Old.</p>
+    </div>
+
+</body>
+</html>
